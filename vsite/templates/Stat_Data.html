@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>Vkids - Stat Data for Admin</title>
+
+  <!-- Favicons -->
+  <link href="img/vkids-logo.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+  <script src="lib/chart-master/Chart.js"></script>
+
+  <!-- =======================================================
+    Template Name: Dashio
+    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+  <section id="container">
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" ></div>
+      </div>
+      <!--logo start-->
+      <a href="main-admin.html" class="logo"><b>KMUTT</b></a>
+      <!--logo end-->
+      <div class="nav notify-row" id="top_menu">
+        <!--  notification start -->
+        <ul class="nav top-menu">
+          <!-- inbox dropdown start-->
+          <li id="header_inbox_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="main-admin.html#">
+              <i class="fa fa-envelope-o"></i>
+              <span class="badge bg-theme">1</span>
+              </a>
+            <ul class="dropdown-menu extended inbox">
+              <div class="notify-arrow notify-arrow-green"></div>
+              <li>
+                <p class="green">มี 1 ข้อความใหม่</p>
+              </li>
+              <li>
+                <a href="main-admin.html#">
+                  <span class="subject">
+                  <span class="from">ผู้ปกครองของ พฤกษ์</span>
+                  <span class="time">Just Now</span>
+                  </span>
+                  <span class="message">
+                  วันนี้ผมพาลูกกลับเองนะครับ
+                  </span>
+                  </a>
+              </li>
+              </li>
+            </ul>
+          </li>
+          <!-- inbox dropdown end -->
+          <!-- notification dropdown start-->
+          <li id="header_notification_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="main-admin.html#">
+              <i class="fa fa-bell-o"></i>
+              <span class="badge bg-warning">2</span>
+              </a>
+            <ul class="dropdown-menu extended notification">
+              <div class="notify-arrow notify-arrow-yellow"></div>
+              <li>
+                <p class="yellow">แจ้งเตือนใหม่ 2 รายการ</p>
+              </li>
+              <li>
+                <a href="main-admin.html#">
+                  <span class="label label-danger"><i class="fa fa-exclamation"></i></span>
+                  รถตู้คันที่ 2 เกิดอุบิติเหตุ
+                  <span class="small italic">4 mins.</span>
+                  </a>
+              </li>
+              <li>
+                <a href="main-admin.html#">
+                  <span class="label label-warning"><i class="fa fa-check"></i></span>
+                  A02 ลงจากรถแล้ว 
+                  <span class="small italic">30 mins.</span>
+                  </a>
+              </li>
+          <!-- notification dropdown end -->
+        </ul>
+        <!--  notification end -->
+      </div>
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" href="login.html">Logout</a></li>
+        </ul>
+      </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><!-- <a href="profile.html"> --><img src="img/user.png" class="img-circle" width="80"></a></p>
+          <h5 class="centered">ADMIN</h5>
+          <li class="mt">
+            <a href="main-admin.html">
+              <i class="fa fa-desktop"></i>
+              <span>หน้าหลัก</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+              <a href="Kids_Data.html">
+              <i class="fa fa-child"></i>
+              ข้อมูลเด็ก</a>
+              </a>
+          </li>
+          <li class="sub-menu">
+              <a href="Car_Data.html">
+              <i class="fa fa-dashboard"></i>
+              ข้อมูลรถ</a>
+              </a>
+          </li>
+          <li class="sub-menu">
+              <a href="Stat_Data.html">
+              <i class=" fa fa-bar-chart-o"></i>
+              <span>ข้อมูลทางสถิติ</span>
+              </a>
+          </li>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper site-min-height">
+        <div class="row" style="    height: 300px;">
+          <div class="col-md-4 col-sm-4 mb">
+                <div class="custom-box">
+                  <center>
+                  <h1 class="mt"><i class="fa fa-dashboard fa-3x"></i></h1>
+                  <div >
+                    <h1>ความเร็ว</h1>
+                  </div>
+                </center>
+                </div>
+          </div>
+            <!-- end col-4 -->
+            <div class="col-md-8 mb">
+              <div class="custom-box" style="    padding-bottom: 28px;">
+                <ul class="pricing">
+                  <li><h3>ความเร็วเฉลี่ย <b style="color: #f17241"> 40 km/hr</b></h3></li>
+                  <li><h3>ความเร็วสูงสุด <b style="color: #f17241"> 80 km/hr</b></h3></li>
+                  <li><h3>รถที่มีความเร็วมากที่สุด <b style="color: #f17241"> Van 1</b></h3></li>
+                </ul>
+              </div>
+              <!-- end custombox -->
+            </div>
+        </div>
+                    <!-- graph start -->
+          <div class="row mt">
+          <div class="col-sm-12">
+            <section class="panel">
+              <header class="panel-heading">
+                ยังทำกราฟไม่ได้จ้าาาา
+              </header>
+            </section>
+          </div>
+            <!-- /graph -->
+          </div>
+
+
+    	<!--  -->
+    	<div class="row" style="    height: 300px;">
+          <div class="col-md-4 col-sm-4 mb">
+                <div class="custom-box">
+                  <center>
+                  <h1 class="mt"><i class="fa fa-suitcase fa-3x"></i></h1>
+                  <div >
+                    <h1>น้ำหนักกระเป๋า</h1>
+                  </div>
+                </center>
+                </div>
+          </div>
+            <!-- end col-4 -->
+            <div class="col-md-8 mb">
+              <div class="custom-box" style="    padding-bottom: 28px;">
+                <ul class="pricing">
+                  <li><h3>น้ำหนักกระเป๋าเฉลี่ย <b style="color: #f17241"> 10.2 kg</b></h3></li>
+                  <li><h3>ความเหมาะสมของน้ำหนักกระเป๋า<b style="color: #f17241"> เยอะเกิน </b></h3></li>
+                  <li><h3>น้ำหนักกระเป๋าที่มากสุด<b style="color: #f17241"> นายกก 20 kg</b></h3></li>
+                </ul>
+              </div>
+              <!-- end custombox -->
+            </div>
+        </div>
+            <!-- graph start -->
+          <div class="row mt">
+          <div class="col-sm-12">
+            <section class="panel">
+              <header class="panel-heading">
+                ยังทำกราฟไม่ได้จ้าาาา
+              </header>
+            </section>
+          </div>
+            <!-- /graph -->
+          </div>
+
+        <div class="row" style="    height: 300px;">
+          <div class="col-md-4 col-sm-4 mb">
+                <div class="custom-box">
+                  <center>
+                  <h1 class="mt"><i class="fa fa-exclamation-triangle fa-3x"></i></h1>
+                  <div >
+                    <h1>ความผิดปกติ</h1>
+                  </div>
+                </center>
+                </div>
+          </div>
+            <!-- end col-4 -->
+            <div class="col-md-8 mb">
+              <div class="custom-box" style="    padding-bottom: 28px;">
+                <ul class="pricing">
+                  <li><h3>เหตุการณ์ผิดปกติ <b style="color: #f17241"> 6 ครั้ง</b></h3></li>
+                  <li><h3>อุบัติเหตุ<b style="color: #f17241"> 4 ครั้ง</b></h3></li>
+                  <li><h3>คันที่มีความผิดปกติที่สุด<b style="color: #f17241"> 3</b></h3></li>
+                </ul>
+              </div>
+              <!-- end custombox -->
+            </div>
+        </div>
+                    <!-- graph start -->
+          <div class="row mt">
+          <div class="col-sm-12">
+            <section class="panel">
+              <header class="panel-heading">
+                ยังทำกราฟไม่ได้จ้าาาา
+              </header>
+            </section>
+          </div>
+            <!-- /graph -->
+          </div>
+        <div class="row" style="    height: 300px;">
+          <div class="col-md-4 col-sm-4 mb">
+                <div class="custom-box" style="
+    padding-bottom: 49px;
+">
+                  <center>
+                  <h1 class="mt"><i class="fa fa-clock-o fa-3x"></i></h1>
+                  <div >
+                    <h3>เวลาในการรับส่งนักเรียน</h3>
+                  </div>
+                </center>
+                </div>
+          </div>
+            <!-- end col-4 -->
+            <div class="col-md-8 mb">
+              <div class="custom-box" style="    padding-bottom: 28px;">
+                <ul class="pricing">
+                  <li><h3>เวลาที่ใช้เฉลี่ยเฉลี่ย <b style="color: #f17241"> 3.2 hr</b></h3></li>
+                  <li><h3>เวลาที่ใช้มากที่สุด<b style="color: #f17241">คันที่ 1 5 hr </b></h3></li>
+                  <li><h3>จำนวนรถที่เข้าสาย<b style="color: #f17241"> 1 คัน</b></h3></li>
+                </ul>
+              </div>
+              <!-- end custombox -->
+            </div>
+        </div>
+                    <!-- graph start -->
+          <div class="row mt">
+          <div class="col-sm-12">
+            <section class="panel">
+              <header class="panel-heading">
+                ยังทำกราฟไม่ได้จ้าาาา
+              </header>
+            </section>
+          </div>
+            <!-- /graph -->
+          </div>
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+      <div class="text-center">
+        <p>
+          &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
+        </p>
+        <div class="credits">
+          <!--
+            You are NOT allowed to delete the credit link to TemplateMag with free version.
+            You can delete the credit link only if you bought the pro version.
+            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+            Licensing information: https://templatemag.com/license/
+          -->
+          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+        </div>
+        <a href="basic_table.html#" class="go-top">
+          <i class="fa fa-angle-up"></i>
+          </a>
+      </div>
+    </footer>
+    <!--footer end-->
+  </section>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="lib/jquery.scrollTo.min.js"></script>
+  <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <!--common script for all pages-->
+  <script src="lib/common-scripts.js"></script>
+  <!--script for this page-->
+  
+</body>
+
+</html>
