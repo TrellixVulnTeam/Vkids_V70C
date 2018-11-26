@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,17 +11,17 @@
   <title>Welcome to Vkids</title>
 
   <!-- Favicons -->
-  <link href="img/vkids-logo.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{% static 'home/home/img/vkids-logo.png'%}" rel="icon">
+  <link href="{% static 'home/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'home/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <!--external css-->
-  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="{% static 'home/lib/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/style-responsive.css" rel="stylesheet">
-  <script src="lib/chart-master/Chart.js"></script>
+  <link href="{% static 'home/css/style.css'%}" rel="stylesheet">
+  <link href="{% static 'home/css/style-responsive.css'%}" rel="stylesheet">
+  <script src="{% static 'home/lib/chart-master/Chart.js'%}"></script>
 
   <!-- =======================================================
     Template Name: Dashio
@@ -35,7 +36,7 @@
 <body>
     <header class="header white-bg">
       <div class="sidebar-toggle-box" style="margin-top: 15px;">
-        <img src="img/logo1.png" width="110">
+        <img src="{%static 'home/img/logo1.png'%}" width="110">
       </div>
       <!--logo start-->
       <!--logo end-->
@@ -53,7 +54,7 @@
   <div id="headerwrap">
     <div class="container">
       <div class="row">
-        <img src="img/vkids-logo.png" height="150">
+        <img src="{% static 'home/img/vkids-logo.png' %}" height="150">
         <h2>เราจะทำให้รถตู้โรงเรียนน่าใช้บริการมากขึ้น</h2>
         <h2>ความจริงก็คิดไม่ออกว่าจะเขียนว่าอะไร</h2>
         <h2>แต่อยากให้มันดูยาว ๆ จะได้ สวย ๆ (มั้ง)</h2>
@@ -136,9 +137,9 @@
   <!-- / copyrights -->
 
   <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/php-mail-form/validate.js"></script>
+  <script src="{% static 'home/lib/jquery/jquery.min.js'%}"></script>
+  <script src="{% static 'home/lib/bootstrap/js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'home/lib/php-mail-form/validate.js'%}"></script>
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
