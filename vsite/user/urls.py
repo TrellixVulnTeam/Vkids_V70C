@@ -4,6 +4,8 @@ from django.contrib.auth.views import LoginView
 
 
 urlpatterns = [
+    path('select',views.selectUser,name='vkids-select'),
     path('login', views.login, name='vkids-login'),
-    path('signup', views.register, name='vkids-register'),
+    path('select/signup/admin', views.adminRegister, name='vkids-adminRegister'),
+    path('select/signup/parent', views.parentRegister, name='vkids-adminRegister'),
 ]
