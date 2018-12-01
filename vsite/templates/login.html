@@ -36,19 +36,21 @@
       *********************************************************************************************************************************************************** -->
   <div id="login-page">
     <div class="container">
-      <form class="form-login" action="main-admin.html">
+      <form class="form-login" action="/user/login" method="POST">
         <h2 class="form-login-heading">Log In</h2>
         <div class="login-wrap">
-          <input type="text" class="form-control" placeholder="User ID" autofocus>
+          {% csrf_token %}
+          {{ form.as_p }}
+          <!-- <input type="text" class="form-control" placeholder="User ID" autofocus>
           <br>
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Password"> -->
           <label class="checkbox">
             <input type="checkbox" value="remember-me"> Remember me
             <span class="pull-right">
             <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
             </span>
             </label>
-          <button class="btn btn-theme btn-block" href="main-admin.html" type="submit"><i class="fa fa-lock"></i> LOG IN</button>
+          <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> LOG IN</button>
           <hr>
 
         <!-- Modal -->
