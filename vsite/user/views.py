@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from user.forms import RegistrationForm
 from django.contrib.auth.forms import AuthenticationForm
 
-from django.contrib.auth import login as builtInLogin
+from django.contrib.auth import login as builtInLogin, logout as builtInLogout
+
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ def adminRegister(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save(True,False)
-            return redirect("/")
+            return redirect("/dashboard")
     else:
         form = RegistrationForm()
 
@@ -24,8 +25,9 @@ def parentRegister(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save(False,True)
-            return redirect("/")
+            user = form.save(False,True)
+            builtInLogin(request, user)
+            return redirect("/dashboard")
     else:
         form = RegistrationForm()
         return render(request,'parent_register.html',{'form':form})
@@ -34,11 +36,18 @@ def login(request):
      if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-             return redirect("/")
+             user = form.get_user()
+             builtInLogin(request,user)
+             return redirect("/dashboard")
      else:
         form = AuthenticationForm()
 
      return render(request,'login.html',{'form':form})
+
+def logout(request):
+     if request.method == 'POST':
+        builtInLogout(request)
+        return redirect("/")
 
 
 

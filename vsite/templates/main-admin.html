@@ -105,7 +105,12 @@
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li>dummy user</li>
-          <li><a class="logout" href="login.html">Logout</a></li>
+          <li>
+            <form class="logout" action="/dashboard/logout" method= "POST" >
+              {% csrf_token %}
+              <button type = "submit">Logout</button>
+            </form>
+          </li>
         </ul>
       </div>
     </header>
