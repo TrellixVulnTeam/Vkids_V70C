@@ -36,7 +36,7 @@
       *********************************************************************************************************************************************************** -->
   <div id="login-page">
     <div class="container">
-      <form class="form-login" action="/user/login" method="POST">
+      <form class="form-login" action="{% url 'authentication:vkids-login' %}" method="POST">
         <h2 class="form-login-heading">Log In</h2>
         <div class="login-wrap">
           {% csrf_token %}
@@ -47,7 +47,7 @@
           <label class="checkbox">
             <input type="checkbox" value="remember-me"> Remember me
             <span class="pull-right">
-            <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
+            <a data-toggle="modal" href="#"> Forgot Password?</a>
             </span>
             </label>
           <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> LOG IN</button>

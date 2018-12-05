@@ -8,7 +8,7 @@ from django.contrib.auth import login as builtInLogin, logout as builtInLogout
 # Create your views here.
 
 def selectUser(request):
-        return render(request,'user_select.html')
+        return render(request,'sign-up-choose.html')
 
 def adminRegister(request):
     if request.method == 'POST':

@@ -31,11 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'person.apps.PersonConfig',
     'home.apps.HomeConfig',
     'user.apps.UserConfig',
     'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
+    'phonenumber_field',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
