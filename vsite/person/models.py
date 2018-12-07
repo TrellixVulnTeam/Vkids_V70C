@@ -15,14 +15,18 @@ class Student(Person):
     student_id = models.AutoField(primary_key = True)
     key = models.CharField(max_length = 25, null = True)
     bus = models.ForeignKey('main.Bus', on_delete = models.CASCADE, null = True)
-
+    
 class Teacher(Person):
     teacher_id = models.AutoField(primary_key = True)
+
+
 
 class Parent(models.Model):
     user = models.OneToOneField('user.User', on_delete = models.CASCADE)
     phone = PhoneNumberField(null=False, blank=True, unique=True)
+    student = models.ManyToManyField(Student)
 
 class Admin(models.Model):
     user = models.OneToOneField('user.User', on_delete = models.CASCADE)
     phone = PhoneNumberField(null=False, blank=True, unique=True)
+    history = models.ForeignKey('main.History', on_delete = models.CASCADE, null = models.CASCADE)

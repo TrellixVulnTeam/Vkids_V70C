@@ -6,3 +6,4 @@ class User(AbstractUser):
     is_boss = models.BooleanField(default=False)
     is_parent = models.BooleanField(default=False)
     
+    

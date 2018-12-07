@@ -16,8 +16,8 @@ class School(models.Model):
 
 class Bus(models.Model):
     bus_id = models.AutoField(primary_key = True)
-    bus_number = models.IntegerField()
-    active = models.BooleanField(default=False) # false for not active, true for active 
+    bus_number = models.IntegerField(blank = True)
+    active = models.BooleanField(default = False) # false for not active, true for active 
     description = models.TextField(blank = True)
     school = models.ForeignKey(School, on_delete = models.CASCADE, null = True)
     driver = models.ForeignKey('person.Driver', on_delete = models.CASCADE, null = True)
@@ -26,8 +26,6 @@ class Bus(models.Model):
 
     avg_speed = models.IntegerField(default = 0)
     max_speed = models.IntegerField(default = 0)
-
-
 
 class History(models.Model):
 
