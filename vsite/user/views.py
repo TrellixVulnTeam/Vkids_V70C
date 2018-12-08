@@ -14,14 +14,14 @@ def selectUser(request):
 def adminRegister(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
-        admin_form = AdminForms(request.POST)
+        admin = AdminForm(request.POST)
 
         if form.is_valid():
-            uf = form.save(True,False)
-            ad = admin_form.save(False)
-            
-            ad.user = uf
-            ad.save()
+            user_form = form.save(True,False)
+            admin_fom = admin.save(False)
+            admin_fom.user = user_form
+            admin_fom.save()
+            builtInLogin(request, user_form)
 
             return redirect("/dashboard/admin")
             
@@ -33,9 +33,13 @@ def adminRegister(request):
 def parentRegister(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
+        parent = ParentForm(request.POST)
+
         if form.is_valid():
-            user = form.save(False,True)
-            builtInLogin(request, user)
+            user_form = form.save(False,True)
+            parent_form = parent.save(False)
+            parent_form.user = user_form
+            builtInLogin(request, user_form)
             return redirect("/dashboard/parent")
     else:
         form = RegistrationForm()

@@ -7,12 +7,12 @@ from user.models import User
 from person.models import Parent, Admin
 
 
-class AdminForms(forms.ModelForm):
+class AdminForm(forms.ModelForm):
     class Meta:
         model = Admin
         exclude = ('user',)
 
-class ParentForms(forms.ModelForm):
+class ParentForm(forms.ModelForm):
     class Meta:
         model = Parent
         exclude = ('user',)
