@@ -4,6 +4,18 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 
 from user.models import User
+from person.models import Parent, Admin
+
+
+class AdminForms(forms.ModelForm):
+    class Meta:
+        model = Admin
+        exclude = ('user',)
+
+class ParentForms(forms.ModelForm):
+    class Meta:
+        model = Parent
+        exclude = ('user',)
 
 class RegistrationForm(UserCreationForm):
 
@@ -20,7 +32,7 @@ class RegistrationForm(UserCreationForm):
             'password2'
         )
 
-    @transaction.atomic      
+    @transaction.atomic
     def save(self, is_boss, is_parent, commit = True):
         user = super(RegistrationForm,self).save(commit=False)
         user.is_boss = is_boss
@@ -33,3 +45,4 @@ class RegistrationForm(UserCreationForm):
             user.save()
 
         return user
+

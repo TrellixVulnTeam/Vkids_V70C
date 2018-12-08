@@ -28,5 +28,6 @@ class Parent(models.Model):
 
 class Admin(models.Model):
     user = models.OneToOneField('user.User', on_delete = models.CASCADE)
-    phone = PhoneNumberField(null=False, blank=True, unique=True)
-    history = models.ForeignKey('main.History', on_delete = models.CASCADE, null = models.CASCADE)
+    test = models.CharField(max_length = 10, default = 'test', blank = True)
+    #phone = PhoneNumberField(null=False, blank=True, unique=True)
+    history = models.ForeignKey('main.History', on_delete = models.CASCADE, blank = True,null = True)

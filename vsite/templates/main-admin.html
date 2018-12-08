@@ -126,7 +126,7 @@
           <p class="centered"><!-- <a href="profile.html"> --><img src="{% static 'home/img/user.png'%}" class="img-circle" width="80"></a></p>
           <h5 class="centered">ADMIN</h5>
           <li class="mt">
-            <a href="main-admin.html">
+            <a href="{% url 'dashboard:vkids-admin_dashboard'%}">
               <i class="fa fa-desktop"></i>
               <span>หน้าหลัก</span>
               </a>
@@ -148,6 +148,24 @@
               <i class=" fa fa-bar-chart-o"></i>
               <span>ข้อมูลทางสถิติ</span>
               </a>
+          </li>
+          <li class="sub-menu">
+            <a href="main-admin.html#">
+            <i class=" fa fa-plus-circle"></i>
+            <span>เพิ่มเด็ก</span>
+            </a>
+          </li>
+          <li class="sub-menu">
+            <a href="main-admin.html#">
+            <i class=" fa fa-plus-circle"></i>
+            <span>เพิ่มรถ</span>
+            </a>
+          </li>
+          <li class="sub-menu">
+            <a href="main-admin.html#">
+            <i class=" fa fa-cogs"></i>
+            <span>แก้ไขข้อมูลส่วนตัว</span>
+            </a>
           </li>
         <!-- sidebar menu end-->
       </div>
