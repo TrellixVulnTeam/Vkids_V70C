@@ -40,7 +40,7 @@
               <div class="fa fa-bars tooltips" data-placement="right" ></div>
             </div>
             <!--logo start-->
-            <a href="main-admin.html" class="logo"><b>KMUTT</b></a>
+            <a href="{% url 'dashboard:vkids-admin_dashboard'%}" class="logo"><b>KMUTT</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
               <!--  notification start -->
@@ -102,7 +102,6 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                <li>dummy user</li>
                 <li>
                   <form class="logout" action="/dashboard/logout" method= "POST" >
                     {% csrf_token %}
@@ -122,7 +121,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
                 <p class="centered"><!-- <a href="profile.html"> --><img src="{% static 'home/img/user.png'%}" class="img-circle" width="80"></a></p>
-                <h5 class="centered">ADMIN</h5>
+                <h5 class="centered">{{ name }}</h5>
                 <li class="mt">
                   <a href="{% url 'dashboard:vkids-admin_dashboard'%}">
                     <i class="fa fa-desktop"></i>

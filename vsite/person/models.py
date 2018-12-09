@@ -5,21 +5,39 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Person(models.Model):
     first_name = models.CharField(max_length = 25)
     last_name = models.CharField(max_length = 25)
-    phone = PhoneNumberField(null=False, blank=True, unique=True)
+    phone = PhoneNumberField(null=True, blank=True, unique=True)
     age = models.IntegerField(null=True, blank=True)
 
 class Driver(Person):
     driver_id = models.AutoField(primary_key = True)
 
 class Student(Person):
+    
+    NORMAL = 'NORM'
+    PROBLEM = 'PROB'
+    STATUS_CHOICE = (
+        (NORMAL, 'ปกติ'), 
+        (PROBLEM, 'ผิดปกติ'),
+    )
+
     student_id = models.AutoField(primary_key = True)
     key = models.CharField(max_length = 25, null = True)
+    school = models.ForeignKey('main.School', on_delete = models.CASCADE, null = True)
     bus = models.ForeignKey('main.Bus', on_delete = models.CASCADE, null = True)
+    status = models.CharField(max_length = 4, choices = STATUS_CHOICE, default= NORMAL)
+    bag_weight = models.IntegerField(blank = True, null = True) 
+
+    def getName(self):
+        return '{} {}'.format(self.first_name,self.last_name)
+    def getBus(self):
+        return self.bus.getBusNumber()
+    def getBagWeight(self):
+        return self.bag_weight
+    def getStatus(self):
+        return dict(self.STATUS_CHOICE).get(self.status)
     
 class Teacher(Person):
     teacher_id = models.AutoField(primary_key = True)
-
-
 
 class Parent(models.Model):
     user = models.OneToOneField('user.User', on_delete = models.CASCADE)
@@ -29,5 +47,7 @@ class Parent(models.Model):
 class Admin(models.Model):
     user = models.OneToOneField('user.User', on_delete = models.CASCADE)
     test = models.CharField(max_length = 10, default = 'test', blank = True)
+    school = models.OneToOneField('main.School', on_delete = models.CASCADE, null = True)
     #phone = PhoneNumberField(null=False, blank=True, unique=True)
-    history = models.ForeignKey('main.History', on_delete = models.CASCADE, blank = True,null = True)
+    history = models.ForeignKey('main.History', on_delete = models.CASCADE, blank = True, null = True)
+    

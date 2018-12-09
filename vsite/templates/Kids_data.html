@@ -29,125 +29,17 @@
                   </tr>
                 </thead>
                 <tbody>
+                  {% for student in students %}
                   <tr>
                     <td>
-                      <a href="1-01.html#">1-01</a>
+                      <a href="1-01.html#">{{ student.bus }}</a>
                     </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-success label-mini">อยู่บนรถ</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                    
+                    <td class="hidden-phone">{{ student.name }}</td>
+                    <td><span class="label label-success label-mini">{{ student.status }}</span></td>
+                    <td class="hidden-phone">{{ student.bag_weight }}</td>
+                    <th><i class="fa fa-phone"></i>{{ student.phone }}</th>
                   </tr>
-                  <tr>
-                    <td>
-                      <a>1-03</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-success label-mini">อยู่บนรถ</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <a>1-04</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-success label-mini">อยู่บนรถ</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <a >1-05</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-success label-mini">อยู่บนรถ</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <a >1-06</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-success label-mini">อยู่บนรถ</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <a >2-01</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-success label-mini">อยู่บนรถ</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <a >2-02</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-success label-mini">อยู่บนรถ</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <a >2-03</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-success label-mini">อยู่บนรถ</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <a >2-04</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-success label-mini">อยู่บนรถ</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <a >2-05</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-info label-mini">หมายเหตุ</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <a >2-06</a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-danger label-mini">ผิดปกติ</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <a >2-07 </a>
-                    </td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    <td><span class="label label-warning label-mini">ลงรถแล้ว</span></td>
-                    <td class="hidden-phone">8 kg</td>
-                    <th><i class="fa fa-phone"></i> 08X-XXXXXXX</th>
-                  </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>

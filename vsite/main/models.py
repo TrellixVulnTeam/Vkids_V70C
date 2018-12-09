@@ -13,15 +13,20 @@ class School(models.Model):
     school_id = models.AutoField(primary_key = True)
     name = models.CharField(max_length = 40)
     location = models.OneToOneField(Location, on_delete = models.CASCADE, null = True)
+    def __str__(self):
+        return 'this school is : {}'.format(self.name)
 
 class Bus(models.Model):
     bus_id = models.AutoField(primary_key = True)
     bus_number = models.IntegerField(blank = True)
     active = models.BooleanField(default = False) # false for not active, true for active 
-    description = models.TextField(blank = True)
+    description = models.TextField(blank = True, null = True)
     school = models.ForeignKey(School, on_delete = models.CASCADE, null = True)
     driver = models.ForeignKey('person.Driver', on_delete = models.CASCADE, null = True)
     teacher = models.ForeignKey('person.Teacher', on_delete = models.CASCADE, null = True)
+    
+    def getBusNumber(self):
+        return self.bus_number
     
 
     avg_speed = models.IntegerField(default = 0)
