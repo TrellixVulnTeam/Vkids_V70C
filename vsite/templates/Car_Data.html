@@ -30,39 +30,19 @@
                   </tr> 
                 </thead>
                 <tbody>
+                  {% for bus in buses %}
                   <tr>
                     <td>
-                      <a href="van1.html#">1</a>
+                      <a href="van1.html#">{{ bus.bus }}</a>
                     </td>
-                    <td><span class="label label-success label-mini">ปกติ</span></td>
-                    <td class="hidden-phone"><a href="driver1.html#">Lorem Ipsum dolor</a></td>
+                    <td><span class = "{{ bus.status_label }}" >{{ bus.status }}</span></td>
+                    <td class="hidden-phone"><a href="driver1.html#">{{ bus.driver }}</a></td>
                     
-                    <td class="hidden-phone">80 kg/hr</td>
+                    <td class="hidden-phone">{{ bus.speed }} km/hr</td>
                     <th><i class="fa fa-comments-o" ></i></th>
                     <th><i class="fa fa-map-marker"></i></th>
-                   </tr>
-                   <tr>
-                    <td>
-                      <a href="van2.html#">2</a>
-                    </td>
-                    <td><span class="label label-warning label-mini">ผิดปกติ</span></td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    
-                    <td class="hidden-phone">0 kg/hr</td>
-                    <th><i class="fa fa-comments-o"></i></th>
-                    <th><i class="fa fa-map-marker"></i></th>
-                   </tr>
-                   <td>
-                      <a href="van3.html#">3</a>
-                    </td>
-                    <td><span class="label label-danger label-mini">อุบิติเหตุ</span></td>
-                    <td class="hidden-phone">Lorem Ipsum dolor</td>
-                    
-                    <td class="hidden-phone">0 kg/hr</td>
-                    <th><i class="fa fa-comments-o"></i></th>
-                    <th><i class="fa fa-map-marker"></i></th>
-                   </tr>
-                    
+                  </tr>
+                  {% endfor %}
                </tbody>
               </table>
             </div>

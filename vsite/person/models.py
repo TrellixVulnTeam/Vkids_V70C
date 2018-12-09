@@ -7,9 +7,15 @@ class Person(models.Model):
     last_name = models.CharField(max_length = 25)
     phone = PhoneNumberField(null=True, blank=True, unique=True)
     age = models.IntegerField(null=True, blank=True)
+    def getFirstName(self):
+        return self.first_name
+    def getLastName(self):
+        return self.last_name
 
 class Driver(Person):
     driver_id = models.AutoField(primary_key = True)
+    def getName(self):
+        return self.getFirstName()
 
 class Student(Person):
     
@@ -24,11 +30,11 @@ class Student(Person):
     key = models.CharField(max_length = 25, null = True)
     school = models.ForeignKey('main.School', on_delete = models.CASCADE, null = True)
     bus = models.ForeignKey('main.Bus', on_delete = models.CASCADE, null = True)
-    status = models.CharField(max_length = 4, choices = STATUS_CHOICE, default= NORMAL)
+    status = models.CharField(max_length = 4, choices = STATUS_CHOICE, default= NORMAL, blank = True)
     bag_weight = models.IntegerField(blank = True, null = True) 
 
     def getName(self):
-        return '{} {}'.format(self.first_name,self.last_name)
+        return '{} {}'.format(self.getFirstName(),self.getLastName())
     def getBus(self):
         return self.bus.getBusNumber()
     def getBagWeight(self):

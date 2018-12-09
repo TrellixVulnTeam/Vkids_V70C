@@ -30,7 +30,25 @@ def adminKids(request):
 
 @login_required(login_url = "/user/login")
 def adminBus(request):
-    return render(request,'Car_Data.html')
+    admin = Admin.objects.get(user = request.user)
+    bus_list = Bus.objects.filter(school = admin.school)
+    print(bus_list)
+    form = { 'buses' : [] }
+
+    for bus in bus_list:
+        bus_dic = {
+                'bus' : bus.getBusNumber(),
+                'status' : bus.getStatus(),
+                'driver' : bus.getDriverName(),
+                'speed': bus.getCurrentSpeed(),
+                'massage': 'test',
+                'position': 'test',
+
+                'status_label' : bus.getStatusLabel(),
+        }  
+        form['buses'].append(bus_dic)
+        
+    return render(request,'Car_Data.html',form)
 
 @login_required(login_url = "/user/login")
 def adminStat(request):

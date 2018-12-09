@@ -17,20 +17,43 @@ class School(models.Model):
         return 'this school is : {}'.format(self.name)
 
 class Bus(models.Model):
+
+    NORMAL = 'NORM'
+    PROBLEM = 'PROB'
+    ACCIDENT = 'ACCI'
+    STATUS_CHOICE = (
+        (NORMAL, 'ปกติ'), 
+        (PROBLEM, 'ผิดปกติ'),
+        (ACCIDENT, 'เกิดอุบัติเหตุ'),
+    )
+    STATUS_LABEL = (
+        (NORMAL, "label label-success label-mini"), 
+        (PROBLEM, "label label-warning label-mini"),
+        (ACCIDENT, "label label-danger label-mini"),
+    )
+
     bus_id = models.AutoField(primary_key = True)
     bus_number = models.IntegerField(blank = True)
-    active = models.BooleanField(default = False) # false for not active, true for active 
-    description = models.TextField(blank = True, null = True)
+    status = models.CharField(max_length = 4, choices = STATUS_CHOICE, default = NORMAL) 
     school = models.ForeignKey(School, on_delete = models.CASCADE, null = True)
     driver = models.ForeignKey('person.Driver', on_delete = models.CASCADE, null = True)
     teacher = models.ForeignKey('person.Teacher', on_delete = models.CASCADE, null = True)
     
-    def getBusNumber(self):
-        return self.bus_number
-    
-
+    current_speed = models.IntegerField(default = 0)
     avg_speed = models.IntegerField(default = 0)
     max_speed = models.IntegerField(default = 0)
+    
+    def getBusNumber(self):
+        return self.bus_number
+    def getStatus(self):
+        return dict(self.STATUS_CHOICE).get(self.status)
+    def getStatusLabel(self):
+        return dict(self.STATUS_LABEL).get(self.status)
+    def getDriverName(self):
+        return self.driver.getName()
+    def getCurrentSpeed(self):
+        return self.current_speed
+
 
 class History(models.Model):
 
