@@ -34,7 +34,7 @@ class Bus(models.Model):
 
 class History(models.Model):
 
-    #### const. for action ######
+    #### const. for action #####
     GET_ON = 'ON'
     DEPART = 'DEP'
     GET_OFF = 'OFF'
@@ -43,7 +43,7 @@ class History(models.Model):
         (DEPART , 'Depart'),
         (GET_OFF , 'Get_off'),
     )
-    #############################
+    ############################
 
     history_id = models.AutoField(primary_key = True)
     student = models.ForeignKey('person.Student', on_delete = models.CASCADE, null = True)
