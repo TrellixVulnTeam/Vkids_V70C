@@ -16,13 +16,12 @@ def adminRegister(request):
         form = RegistrationForm(request.POST)
         admin = AdminForm(request.POST)
 
-        if form.is_valid():
+        if form.is_valid() and admin.is_valid():
             user_form = form.save(True,False)
             admin_fom = admin.save(False)
             admin_fom.user = user_form
             admin_fom.save()
             builtInLogin(request, user_form)
-
             return redirect("/dashboard/admin")
             
     else:
@@ -35,14 +34,16 @@ def parentRegister(request):
         form = RegistrationForm(request.POST)
         parent = ParentForm(request.POST)
 
-        if form.is_valid():
+        if form.is_valid() and parent.is_valid():
             user_form = form.save(False,True)
             parent_form = parent.save(False)
             parent_form.user = user_form
+            parent_form.save()
             builtInLogin(request, user_form)
             return redirect("/dashboard/parent")
     else:
         form = RegistrationForm()
+
         return render(request,'parent_register.html',{'form':form})
 
 def login(request):

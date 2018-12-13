@@ -1140,9 +1140,9 @@ img {
        -o-transition: all .2s ease-in-out;
           transition: all .2s ease-in-out;
 }
-/*.img-circle {
+.img-circle {
   border-radius: 50%;
-}*/
+}
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -6522,6 +6522,9 @@ button.close {
 }
 .pull-left {
   float: left !important;
+}
+.pull-middle {
+  float: middle !important;
 }
 .hide {
   display: none !important;

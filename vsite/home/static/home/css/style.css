@@ -240,7 +240,17 @@ ul.top-menu > li > .login {
     margin-top: 15px;
 }
 
-
+ul.top-menu > li > .language {
+    color: #f17241;
+    font-size: 12px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #ff6633 !important;
+    padding: 5px 15px;
+    margin-right: 15px;
+    background: #f2f3f2;
+    margin-top: 15px;
+}
 
 
 
@@ -1409,6 +1419,74 @@ PANELS CONFIGURATIONS
 	font-size: 12px;
 }
 
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+/*  position: fixed;*/
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
 /* Calendar Configuration */
 #calendar {
 	color: white;
@@ -1444,7 +1522,7 @@ PANELS CONFIGURATIONS
   background: #8fde9c;
 }
 .steps label{
-  background: #393D40;
+  background: #ddd;
   height: 65px;
   line-height: 65px;
   width: 100%;
@@ -1480,7 +1558,7 @@ PANELS CONFIGURATIONS
 #op1:checked ~ label[for=op1]:before,
 #op2:checked ~ label[for=op2]:before,
 #op3:checked ~ label[for=op3]:before{
-  border: 2px solid #96c93c;
+  border: 2px solid #f17241;
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGFJREFUeNpinHLMhgEHKADia0xQThIQs6JJ9gPxZhYQAcS6QHwDiI8hSYJAC0gBPxDLAvFcIJ6JJJkDxFNBVtgBcQ8Qa6BLghgwN4A4a9ElQYAFSj8C4mwg3o8sCQIAAQYA78QTYqnPZuEAAAAASUVORK5CYII=') no-repeat center center;
 }
 

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'phonenumber_field',
+    'widget_tweaks',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',

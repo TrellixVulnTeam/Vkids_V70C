@@ -3,36 +3,64 @@ from django.contrib.auth.decorators import login_required
 from person.models import *
 from .models import *
 
+from person.forms import StudentForm
+from main.forms import LocationForm 
+
+
 # Create your views here.
 
 @login_required(login_url = "/user/login")
 def adminDash(request):
-    return render(request,'main-admin.html')
+    admin = Admin.objects.get(user = request.user)
+
+    form = {
+        'all_student' : admin.getInBusCount() + admin.getOutBusCount(),
+        'in_bus_student' : admin.getOutBusCount(),
+        'not_in_bus_student' : admin.getInBusCount(),
+        'all_bus' : admin.getBusActive() + admin.getBusStation(),
+        'active_bus': admin.getBusActive(), 
+        'not_active_bus' : admin.getBusStation(),
+    }
+    return render(request,'admin/main-admin.html',form)
 
 @login_required(login_url = "/user/login")
 def adminKids(request):
+    
     admin = Admin.objects.get(user = request.user)
-    student_list = Student.objects.filter(school = admin.school)
     
-    form = { 'students' : [] }
-    
-    for student in student_list:
-        student_dic = {
-                'bus' : student.getBus(),
-                'name' : student.getName(),
-                'status' : student.getStatus(),
-                'bag_weight' : student.getBagWeight(),
-                'phone' : '089-0527782',
-        }
-        form['students'].append(student_dic)
+    if request.method == 'POST':
+        request = StudentForm.addStudentForm(request,admin)
+        return render(request,'test.html')
 
-    return render(request,'kids_data.html',form)
+    else:
+        
+        student_form = StudentForm()
+        location_form = LocationForm()
+
+        student_list = admin.getStudentInSchool()
+    
+        form = { 'students' : [] }
+    
+        for student in student_list:
+                student_dic = {
+                    'bus' : student.getBus(),
+                    'name' : student.getName(),
+                    'status' : student.getStatus(),
+                    'bag_weight' : student.getBagWeight(),
+                    'phone' : '089-0527782',
+                }
+                form['students'].append(student_dic)
+        
+        form['student_form'] = student_form
+        form['location_form'] = location_form
+
+        return render(request,'admin/kids_data.html',form)
 
 @login_required(login_url = "/user/login")
 def adminBus(request):
     admin = Admin.objects.get(user = request.user)
     bus_list = Bus.objects.filter(school = admin.school)
-    print(bus_list)
+
     form = { 'buses' : [] }
 
     for bus in bus_list:
@@ -48,11 +76,11 @@ def adminBus(request):
         }  
         form['buses'].append(bus_dic)
         
-    return render(request,'Car_Data.html',form)
+    return render(request,'admin/Car_Data.html',form)
 
 @login_required(login_url = "/user/login")
 def adminStat(request):
-    return render(request, 'Stat_Data.html')
+    return render(request, 'admin/Stat_Data.html')
 
 def test(request):
         return render(request,'test.html')

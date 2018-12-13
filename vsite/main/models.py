@@ -18,23 +18,23 @@ class School(models.Model):
 
 class Bus(models.Model):
 
-    NORMAL = 'NORM'
-    PROBLEM = 'PROB'
+    ACTIVE = 'ACTV'
+    STATION = 'STAY'
     ACCIDENT = 'ACCI'
     STATUS_CHOICE = (
-        (NORMAL, 'ปกติ'), 
-        (PROBLEM, 'ผิดปกติ'),
+        (ACTIVE, 'กำลังใช้งาน'), 
+        (STATION, 'จอด'),
         (ACCIDENT, 'เกิดอุบัติเหตุ'),
     )
     STATUS_LABEL = (
-        (NORMAL, "label label-success label-mini"), 
-        (PROBLEM, "label label-warning label-mini"),
+        (ACTIVE, "label label-success label-mini"), 
+        (STATION, "label label-warning label-mini"),
         (ACCIDENT, "label label-danger label-mini"),
     )
 
     bus_id = models.AutoField(primary_key = True)
     bus_number = models.IntegerField(blank = True)
-    status = models.CharField(max_length = 4, choices = STATUS_CHOICE, default = NORMAL) 
+    status = models.CharField(max_length = 4, choices = STATUS_CHOICE, blank = True, default = ACTIVE) 
     school = models.ForeignKey(School, on_delete = models.CASCADE, null = True)
     driver = models.ForeignKey('person.Driver', on_delete = models.CASCADE, null = True)
     teacher = models.ForeignKey('person.Teacher', on_delete = models.CASCADE, null = True)
@@ -43,6 +43,8 @@ class Bus(models.Model):
     avg_speed = models.IntegerField(default = 0)
     max_speed = models.IntegerField(default = 0)
     
+    def __str__(self):
+        return str(self.bus_number)
     def getBusNumber(self):
         return self.bus_number
     def getStatus(self):
