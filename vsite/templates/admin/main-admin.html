@@ -26,11 +26,6 @@
                     <div>
                       <h1>รถทุกคัน</h1>
                     </div>
-                    <!-- <footer>
-                            <div class="centered">
-                              <h4><i class="fa fa-trophy"></i>รถทุกคัน</h4>
-                            </div>
-                          </footer> -->
                   </center>
                 </div>
               </a>
@@ -42,16 +37,16 @@
 
                 <div class="grey-panel pn donut-chart">
                   <div class="grey-header">
-                    <h4>จำนวนรถที่ใช้งาน</h4>
+                    <h4>จำนวนรถที่ใช้งาน</h>
                   </div>
                   <canvas id="serverstatus03" height="120" width="120"></canvas>
                   <script>
                     var doughnutData = [{
                       value: {{ active_bus }} ,
-                    color: "#FF6B6B"
+                    color: "#f17241"
                       },
                     {
-                      value: {{ not_active_bus }},
+                      value: { { not_active_bus } },
                       color: "#fdfdfd"
                     }
                     ];
@@ -79,11 +74,11 @@
                   <canvas id="serverstatus01" height="120" width="120"></canvas>
                   <script>
                     var doughnutData = [{
-                      value: {{in_bus_student}},
-                    color: "#FF6B6B"
+                      value: {{ in_bus_student }},
+                    color: "#f17241"
                       },
                     {
-                      value: {{not_in_bus_student}},
+                      value: { { not_in_bus_student } },
                       color: "#fdfdfd"
                     }
                     ];
@@ -191,7 +186,4 @@
   }
 </script>
 
-</body>
-
-</html>
 {% endblock content %}

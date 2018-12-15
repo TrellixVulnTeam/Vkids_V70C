@@ -20,12 +20,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = 'jvi)$rgc0w#c8nnza-tm4_csn(()3_z$g!1(4j@%7by65)xaq&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG = True # environment vars are strings. "convert" to boolean. lol, Python
+
+ALLOWED_HOSTS = [
+  # TODO: add your Google Cloud Project-ID here
+    'vkids-225418.appspot.com', # must add the app engine (project-id) domain here
+    '127.0.0.1', # for local testing 
+]
 
 
 # Application definition
@@ -56,7 +62,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'vsite.urls'
+ROOT_URLCONF = 'vsite.urls' # ROOT-PROJECT-DIRECTORY is the directory where this settings.py file is
+WSGI_APPLICATION = 'vsite.wsgi.application'
 
 TEMPLATES = [
     {
@@ -85,8 +92,12 @@ AUTH_USER_MODEL = 'user.User'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vkids',
+        'USER': 'postgres',
+        'PASSWORD': 'chit2118',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -127,5 +138,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
+
+STATIC_URL = 'https://storage.cloud.google.com/vkids-static/static/'
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'vkids-static')
 STATICSFILES_DIRS = [os.path.join(BASE_DIR,'static'),]

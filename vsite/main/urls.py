@@ -14,6 +14,6 @@ urlpatterns = [
     path('admin/statistics', views.adminStat, name='vkids-admin_statistics'),
 
 
-    path('parent',views.test, name='vkids-parent_dashboard'),
+    path('parent',views.parentDash, name='vkids-parent_dashboard'),
     
 ]

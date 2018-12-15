@@ -27,21 +27,21 @@ class Bus(models.Model):
         (ACCIDENT, 'เกิดอุบัติเหตุ'),
     )
     STATUS_LABEL = (
-        (ACTIVE, "label label-success label-mini"), 
-        (STATION, "label label-warning label-mini"),
-        (ACCIDENT, "label label-danger label-mini"),
+        (ACTIVE, "background:#5cb75d;"), 
+        (STATION, "background: #f0ad4e;"),
+        (ACCIDENT, "background-color: #d9534f;"),
     )
 
     bus_id = models.AutoField(primary_key = True)
     bus_number = models.IntegerField(blank = True)
-    status = models.CharField(max_length = 4, choices = STATUS_CHOICE, blank = True, default = ACTIVE) 
+    status = models.CharField(max_length = 4, choices = STATUS_CHOICE, default= STATION, blank = True) 
     school = models.ForeignKey(School, on_delete = models.CASCADE, null = True)
     driver = models.ForeignKey('person.Driver', on_delete = models.CASCADE, null = True)
     teacher = models.ForeignKey('person.Teacher', on_delete = models.CASCADE, null = True)
     
-    current_speed = models.IntegerField(default = 0)
-    avg_speed = models.IntegerField(default = 0)
-    max_speed = models.IntegerField(default = 0)
+    current_speed = models.IntegerField(blank = True, default = 0)
+    avg_speed = models.IntegerField(blank = True, default = 0)
+    max_speed = models.IntegerField(blank = True, default = 0)
     
     def __str__(self):
         return str(self.bus_number)
