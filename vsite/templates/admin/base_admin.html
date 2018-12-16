@@ -103,9 +103,9 @@
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
                 <li>
-                  <form class="logout" action="/dashboard/logout" method= "POST" >
+                  <form action="/dashboard/logout" method= "POST" >
                     {% csrf_token %}
-                    <button type = "submit">Logout</button>
+                    <button class="btn btn-theme" type = "submit" style="padding-left:10px;padding-right:10px;padding-top:5px;padding-bottom:5px;margin-top: 15px;">Logout</button>
                   </form>
                 </li>
               </ul>

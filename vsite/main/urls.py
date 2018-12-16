@@ -13,7 +13,7 @@ urlpatterns = [
     path('admin/kids',views.adminKids, name='vkids-admin_kids'),
     path('admin/statistics', views.adminStat, name='vkids-admin_statistics'),
 
-
-    path('parent',views.parentDash, name='vkids-parent_dashboard'),
     
+    path('parent',views.parentDash, name='vkids-parent_dashboard'),
+    path('parent/profile',views.parentProfile, name='vkids-parent_profile'),
 ]

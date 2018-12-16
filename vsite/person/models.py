@@ -20,6 +20,10 @@ class Driver(Person):
     def getName(self):
         return self.getFirstName()
 
+class Parent(models.Model):
+    user = models.OneToOneField('user.User', on_delete = models.CASCADE)
+    phone = PhoneNumberField(null=True, blank=True)
+
 class Student(Person):
     
     IN_BUS = 'INBUS'
@@ -47,9 +51,12 @@ class Student(Person):
     bus = models.ForeignKey('main.Bus', on_delete = models.CASCADE, null = True)
     status = models.CharField(max_length = 6, choices = STATUS_CHOICE, default= DONTCARE, blank = True)
     
+    parent = models.ForeignKey(Parent, on_delete = models.CASCADE, null = True)
     bag_weight = models.IntegerField(blank = True, null = True) 
     #weight 
 
+    def getId(self):
+        return self.student_id
     def getName(self):
         return '{} {}'.format(self.getFirstName(),self.getLastName())
     def getBus(self):
@@ -60,14 +67,8 @@ class Student(Person):
         return dict(self.STATUS_CHOICE).get(self.status)
     def getStatusLabel(self):
         return dict(self.STATUS_LABEL).get(self.status)
-    
-class Teacher(Person):
-    teacher_id = models.AutoField(primary_key = True)
-
-class Parent(models.Model):
-    user = models.OneToOneField('user.User', on_delete = models.CASCADE)
-    phone = PhoneNumberField(null=True, blank=True)
-    student = models.ManyToManyField(Student, blank = True)
+    def getCurrentSpeed(self):
+        return self.bus.getCurrentSpeed()
 
 class Admin(models.Model):
     user = models.OneToOneField('user.User', on_delete = models.CASCADE)

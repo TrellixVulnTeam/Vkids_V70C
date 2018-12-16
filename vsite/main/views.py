@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from person.models import *
 from .models import *
 
@@ -17,15 +18,32 @@ from main.forms import LocationForm
 @login_required(login_url = "/user/login")
 def adminDash(request):
     admin = Admin.objects.get(user = request.user)
+    student_list = admin.getStudentInSchool()
+    bus_list = Bus.objects.filter(school = admin.school)
 
     form = {
         'all_student' : admin.getInBusCount() + admin.getOutBusCount(),
         'in_bus_student' : admin.getOutBusCount(),
-        'not_in_bus_student' : admin.getInBusCount(),
         'all_bus' : admin.getBusActive() + admin.getBusStation(),
         'active_bus': admin.getBusActive(), 
-        'not_active_bus' : admin.getBusStation(),
+        'student_information' : [],
+        'bus_information' : [],
     }
+    for student in student_list:
+        student_dic = {
+            'name' : student.getFirstName(),
+            'status' : student.getStatus(),
+            'status_label' : student.getStatusLabel(),
+        }
+        form['student_information'].append(student_dic)
+    for bus in bus_list:
+        bus_dic = {
+            'bus_number' : bus.getBusNumber(),
+            'status' : bus.getStatus(),
+            'status_label' : bus.getStatusLabel(),
+        }
+        form['bus_information'].append(bus_dic)
+    
     return render(request,'admin/main-admin.html',form)
 
 @login_required(login_url = "/user/login")
@@ -35,7 +53,7 @@ def adminKids(request):
     
     if request.method == 'POST':
         request = StudentForm.addStudentForm(request,admin)
-        return render(request,'test.html')
+        return render(request,'admin/kids_data.html')
 
     else:
         
@@ -98,5 +116,57 @@ def test(request):
 
 @login_required(login_url = "/user/login")
 def parentDash(request):
-    return render(request,'parent/main-parent.html')
- 
+    
+    parent = Parent.objects.get(user = request.user)
+    student_list = Student.objects.filter(parent = parent)
+
+    if request.method == 'POST':
+        form = studentListFunc(student_list)
+        form = studentInformation(form)
+        if len(request.POST.dict()) == 1:
+            return render(request,'parent/main-parent.html',form)
+        check_number = next(iter(request.POST.dict()))[-1]
+        form = studentInformation(form,check_number)
+
+        return render(request,'parent/main-parent.html',form)
+    else:    
+        form = studentListFunc(student_list)
+        form = studentInformation(form)
+        return render(request,'parent/main-parent.html',form)
+
+@login_required(login_url = "/user/login")
+def parentProfile(request):
+    return render(request,'parent/profile_parent.html')
+
+def studentListFunc(student_list):
+    i = 1
+    form = {"student_id_list" : [] ,'students' : [] }
+    for student in student_list:
+        form["student_id_list"].append(student.getId())
+        bus_dic = {    
+            'number' : i,
+            'id' : student.getId(),
+            'name' : student.getName(),
+            'status' : student.getStatus(),
+
+            'status_label' : student.getStatusLabel(),
+        }  
+        form['students'].append(bus_dic)
+        i += 1
+    return form
+
+def studentInformation(form,check_number = 1):
+    student_id = form["student_id_list"][int(check_number)-1]
+    student = Student.objects.get(pk = student_id)
+        
+    student_information = {
+        'status' : student.getStatus(),
+        'bag_weight' : student.getBagWeight(),
+        'bus': student.getBus(),
+        'speed': student.getCurrentSpeed(),
+
+        'status_label' : student.getStatusLabel(),
+        }
+        
+    form['student_information'] = student_information
+    return form

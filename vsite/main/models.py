@@ -37,7 +37,6 @@ class Bus(models.Model):
     status = models.CharField(max_length = 4, choices = STATUS_CHOICE, default= STATION, blank = True) 
     school = models.ForeignKey(School, on_delete = models.CASCADE, null = True)
     driver = models.ForeignKey('person.Driver', on_delete = models.CASCADE, null = True)
-    teacher = models.ForeignKey('person.Teacher', on_delete = models.CASCADE, null = True)
     
     current_speed = models.IntegerField(blank = True, default = 0)
     avg_speed = models.IntegerField(blank = True, default = 0)

@@ -34,23 +34,23 @@
 </head>
 
 <body>
-    <header class="header white-bg">
-        <div class="sidebar-toggle-box" style="margin-top: 15px;">
-          <img src="{%static 'home/img/logo1.png' %}" width="110">
-        </div>
-        <!--logo start-->
-        <!--logo end-->
-        <div class="nav notify-row" id="top_menu">
-          <!--  notification start -->
-          <!--  notification end -->
-        </div>
-        <div class="top-menu">
-          <ul class="nav pull-right top-menu">
-            <li><a class="logput" href="{% url 'authentication:vkids-select' %}">Sign up</a></li>
-            <li><a class="logout" href="{% url 'authentication:vkids-login' %}">Log in</a></li>
-          </ul>
-        </div>
-      </header>
+  <header class="header white-bg">
+    <div class="sidebar-toggle-box" style="margin-top: 15px;">
+      <img src="{%static 'home/img/logo1.png' %}" width="110">
+    </div>
+    <!--logo start-->
+    <!--logo end-->
+    <div class="nav notify-row" id="top_menu">
+      <!--  notification start -->
+      <!--  notification end -->
+    </div>
+    <div class="top-menu">
+      <ul class="nav pull-right top-menu">
+        <li><a class="login" href="{% url 'authentication:vkids-select' %}" >Signup</a></li>
+        <li><a class="logout" href="{% url 'authentication:vkids-login' %}">Log in</a></li>
+      </ul>
+    </div>
+  </header>
 
   <div id="headerwrap">
     <div class="container">
@@ -69,7 +69,7 @@
     <div class="container">
       <div class="row">
         <h1>Vkids ทำอะไรได้บ้าง</h1>
-        <hr >
+        <hr>
         <div class="col-md-4">
           <div class="block">
             <span class="fa fa-list-ul fa-4x"></span>
@@ -146,4 +146,5 @@
   <!-- <script src="{% static 'admin/js/main.js' %}"></script> -->
 
 </body>
+
 </html>

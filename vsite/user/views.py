@@ -23,6 +23,10 @@ def adminRegister(request):
             admin_fom.save()
             builtInLogin(request, user_form)
             return redirect("/dashboard/admin")
+        else:
+            form = RegistrationForm()
+
+            return render(request,'admin_register.html',{'form':form})
             
     else:
         form = RegistrationForm()
@@ -41,6 +45,10 @@ def parentRegister(request):
             parent_form.save()
             builtInLogin(request, user_form)
             return redirect("/dashboard/parent")
+        else:
+            form = RegistrationForm()
+
+            return render(request,'parent_register.html',{'form':form})
     else:
         form = RegistrationForm()
 

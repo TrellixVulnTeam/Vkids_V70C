@@ -16,17 +16,19 @@
           <!-- /col-md-4-->
           <div class="col-md-4 mb">
             <div class="steps pn">
-              <input id="op1" name="op1" type="checkbox" class="check">
-              <label for="op1">dekdok1
-                <span class="label label-mini" style="background: #5cb75d;"> Normal</span>
-              </label>
-              <input id="op2" name="op2" type="checkbox" class="check">
-              <label for="op2">dekdok2 <span class="label label-mini" style="background: #ffcf00;"> Unusual</span>
-              </label>
-              <input id="op3" name="op3" type="checkbox" class="check">
-              <label for="op3">dekdok3 <span class="label label-mini" style="background: #797979;"> Arrived</span>
-              </label>
-              <input type="submit" value="เลือกเด็ก" id="submit1">
+              <form method="POST">
+                {% for student in students %}
+                <input id="op{{student.number}}" name="op{{student.number}}" type="checkbox" class="check">
+                <label for="op{{student.number}}">{{student.name}} <span class="label label-mini" style="{{student.status_label}}">
+                    {{student.status}}</span>
+                </label>
+                {% endfor %}
+
+                {% csrf_token %}
+                <input type="submit" value="เลือกเด็ก" id="submit1">
+              </form>
+
+
               <!-- add kids -->
               <i class="fa fa-plus" data-toggle="modal" href="main-parent.html#myModal" style="margin-top: 20px; text-align:center;width:6%;"></i>
             </div>
@@ -55,26 +57,70 @@
             </div>
           </div>
 
+          <div class="col-md-3">
+            <div class="darkblue-panel pn">
+              <div class="darkblue-header">
+                <h5>DEKDOK1</h5>
+              </div>
+              <h1 class="mt"><i class="fa fa-user fa-3x"></i></h1>
+              <p>เบอร์ติดต่อผู้ดูแลรถตู้</p>
+              <footer>
+                <div class="centered">
+                  <h5><i class="fa fa-phone"></i> 080-000-0000 </h5>
+                </div>
+              </footer>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-md-3">
-              <div class="weather-3 pn centered" style="background: #5cb75d;">
+              <div class="weather-3 pn centered" style="{{student_information.status_label}}">
                 <i class="fa fa-check"></i>
-                <h1>ON CAR</h1>
+                <h1>{{student_information.status}}</h1>
                 <div class="info">
                   <div class="row">
-                    <h3 class="centered"><i class="fa fa-bus " style="font-size: 20px;"></i> A1</h3>
+                    <h3 class="centered"><i class="fa fa-bus " style="font-size: 20px;"></i>{{student_information.bus}}</h3>
                     <div class="col-sm-6 col-xs-6 pull-right">
-                      <p class="goright"><i class="fa fa-dashboard"></i> 15 km/hr</p>
+                      <p class="goright"><i class="fa fa-dashboard"></i> {{student_information.speed}} km/hr</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <!--            ผิดปกติ     <div class="col-md-3">
+                  <div class="weather-3 pn centered" style="background: #ffcf00;">
+                  <i class="fa fa-exclamation-triangle"></i>
+                  <h1>UNUSUAL</h1>
+                  <div class="info">
+                    <div class="row">
+                      <h3 class="centered"><i class="fa fa-bus " style="font-size: 20px;"></i>  A1</h3>
+                      <div class="col-sm-6 col-xs-6 pull-right">
+                        <p class="goright"><i class="fa fa-dashboard"></i> 15 km/hr</p>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div> -->
+            <!--                ลงรถแล้ว <div class="col-md-3">
+                  <div class="weather-3 pn centered"style="background: #797979;">
+                  <i class="fa fa-check"></i>
+                  <h1>ARRIVED</h1>
+                  <div class="info">
+                    <div class="row">
+                      <h3 class="centered"><i class="fa fa-bus " style="font-size: 20px;"></i>  A1</h3>
+                      <div class="col-sm-6 col-xs-6 pull-right">
+                        <p class="goright"><i class="fa fa-dashboard"></i> 15 km/hr</p>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
 
+ -->
             <div class="col-md-3">
               <div class="weather-3 pn centered" style="background: #797979">
                 <i class="fa fa-suitcase"></i>
-                <h1>5 kg</h1>
+                <h1>{{student_information.bag_weight}} kg</h1>
                 <div class="info">
                   <div class="row">
                     <h3 class="centered" style="margin-bottom: 47px;">ปกติ</h3>
@@ -83,20 +129,6 @@
               </div>
             </div>
 
-            <div class="col-md-3">
-              <div class="message-p pn">
-                <div class="message-header">
-                  <h5>DIRECT MESSAGE TO ADMIN</h5>
-                </div>
-                <div class="row">
-                  <div class="col-md-9" style="width:90%;">
-                    <textarea class="form-control " id="ccomment" name="comment" required="" placeholder="Message to Admin"
-                      style="margin-left: 10px;height: 130px;"></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-theme pull-right" style="margin-top: 10px; margin-right: 30px;">Send</button>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div class="row mt">

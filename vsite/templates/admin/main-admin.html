@@ -17,101 +17,86 @@
         <div class="col-lg-12">
           <!-- CHART PANELS -->
           <div class="row">
-            <div class="col-md-4 col-sm-4 mb">
-              <!-- <a href="{% url 'dashboard:vkids-admin_kids' %}"> -->
-              <a href="van1.html">
-                <div>
-                  <center>
-                    <h1 class="mt"><i class="fa fa-bus fa-4x"></i></h1>
-                    <div>
-                      <h1>รถทุกคัน</h1>
-                    </div>
-                  </center>
-                </div>
-              </a>
-              <!--  /darkblue panel -->
-            </div>
-            <!-- /col-md-4 -->
-            <div class="col-md-4 col-sm-4 mb">
-              <a href="Car_Data.html">
-
-                <div class="grey-panel pn donut-chart">
-                  <div class="grey-header">
-                    <h4>จำนวนรถที่ใช้งาน</h>
-                  </div>
-                  <canvas id="serverstatus03" height="120" width="120"></canvas>
-                  <script>
-                    var doughnutData = [{
-                      value: {{ active_bus }} ,
-                    color: "#f17241"
-                      },
-                    {
-                      value: { { not_active_bus } },
-                      color: "#fdfdfd"
-                    }
-                    ];
-                    var myDoughnut = new Chart(document.getElementById("serverstatus03").getContext("2d")).Doughnut(doughnutData);
-                  </script>
-                  <div class="row">
-                    <div class="col-sm-6 col-xs-6 goleft">
-                      <p><br />จาก {{all_bus}} คัน</p>
-                    </div>
-                    <div class="col-sm-6 col-xs-6">
-                      <h2>ใช้ {{active_bus}} คัน</h2>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <!-- /grey-panel -->
-            </div>
             <!-- /col-md-4-->
-            <div class="col-md-4 col-sm-4 mb">
-              <a href="Kids_Data.html">
-                <div class="grey-panel pn donut-chart">
-                  <div class="grey-header">
-                    <h4>จำนวนเด็กในรถ</h4>
-                  </div>
-                  <canvas id="serverstatus01" height="120" width="120"></canvas>
-                  <script>
-                    var doughnutData = [{
-                      value: {{ in_bus_student }},
-                    color: "#f17241"
-                      },
-                    {
-                      value: { { not_in_bus_student } },
-                      color: "#fdfdfd"
-                    }
-                    ];
-                    var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
-                  </script>
-                  <div class="row">
-                    <div class="col-sm-6 col-xs-6 goleft">
-                      <p><br> จาก {{all_student}} คน </p>
-                    </div>
-                    <div class="col-sm-6 col-xs-6">
-                      <h2>เหลือ{{ in_bus_student }} คน</h2>
-                    </div>
+
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 mb">
+
+          <img src="{% static 'home/img/vkids-logo.png'%}" style="width: 270px;text-align: center;">
+        </div>
+        <div class="col-md-4 col-sm-4 mb">
+          <div class="weather-3 pn centered" style="background-color: #ffc200">
+            <i class="fa fa-bus"></i>
+            <h1>ใช้งาน {{active_bus}} คัน</h1>
+            <div class="info" style="min-height: 90px;">
+              <div class="row">
+                <h3 class="centered">จาก {{all_bus}} คัน</h3>
+                <div class="btn-block">
+                  <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true"
+                      style="right: 30px;">
+                      Status <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" style="width: 100%">
+                      {% for bus in bus_information %}
+                      <li><a> {{bus.bus_number}} <span class="label label-mini" style='{{bus.status_label}}'>
+                            {{bus.status}}</span> </a></li>
+                      <!-- <li><a>Van2 <span class="label label-mini" style="background: #ffcf00;"> Unusual</span></a></li>
+                      <li><a>Van3 <span class="label label-mini" style="background: #797979;"> Parking</span></a></li> -->
+                      {% endfor %}
+                      <li class="divider"></li>
+                    </ul>
                   </div>
                 </div>
-              </a>
-              <!-- /col-md-4 -->
-            </div>
-            <!-- /row - FIRST ROW OF PANELS -->
-            <!-- Google map start -->
-            <div class="row mt">
-              <div class="col-sm-12">
-                <section class="panel">
-                  <header class="panel-heading">
-                    Google Map with Loaction List
-                  </header>
-                  <div class="panel-body">
-                    <div id="gmap-list"></div>
-                  </div>
-                </section>
               </div>
-              <!-- /Google map -->
             </div>
           </div>
+        </div>
+
+
+
+        <div class="col-md-4 col-sm-4 mb">
+          <div class="weather-3 pn centered" style="background-color: #f88600">
+            <i class="fa fa-user"></i>
+            <h1>อยู่บนรถ {{in_bus_student}} คน</h1>
+            <div class="info" style="min-height: 90px;">
+              <div class="row">
+                <h3 class="centered">จาก {{all_student}} คน</h3>
+                <div class="btn-block">
+                  <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true"
+                      style="right: 30px;">
+                      Name <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" style="width: 100%">
+                      {% for student in student_information %}
+                        <li><a>{{student.name}} <span class="label label-mini" style="{{student.status_label}}"> {{student.status}}</span> </a></li>
+                      {% endfor %}
+                      <li class="divider"></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /row - FIRST ROW OF PANELS -->
+        <!-- Google map start -->
+        <div class="row mt">
+          <div class="col-sm-12">
+            <section class="panel">
+              <header class="panel-heading">
+                Google Map with Loaction List
+              </header>
+              <div class="panel-body">
+                <div id="gmap-list"></div>
+              </div>
+            </section>
+          </div>
+          <!-- /Google map -->
+        </div>
+      </div>
     </section>
     </div>
     <!-- /wrapper -->
