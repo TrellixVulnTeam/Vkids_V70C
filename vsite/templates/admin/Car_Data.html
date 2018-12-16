@@ -23,16 +23,40 @@
                     class="fa fa-cogs"></i>
                 </a>
                 <a data-toggle="modal" href="Kids_Data.html#myModal3" style="margin-right: 20px;color: #797979;"><i
-                    class="fa fa-trash"></i></h4>
+                    class="fa fa-trash">
+
+                  </i></a></span></h4>
+
             <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="pull-middle modal-title centered">Add</h4>
+                    <h4 class="pull-middle modal-title centered">เพิ่มรถ</h4>
                   </div>
                   <div class="modal-body" style="height: 190px;">
-                    <div class="form-group">
+
+
+                    <form method="POST">
+                      {% csrf_token %}
+                      {% for field in bus_form %}
+                      <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">{{ field.label_tag }}</label>
+                        <div class="col-sm-10">
+                          {{ field }}
+                          <!-- <input type="text" > -->
+                        </div>
+                      </div>
+                      {% endfor %}
+                  </div>
+                  <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">ยกเลิก</button>
+                    <button class="btn btn-theme" type="submit">เพิ่มรถ</button>
+                  </div>
+                  </form>
+
+
+                  <!-- <div class="form-group">
                       <label class="col-sm-2 col-sm-2 control-label">Name</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control">
@@ -54,10 +78,114 @@
                   <div class="modal-footer">
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
                     <button class="btn btn-theme" type="button">Submit</button>
+                  </div> -->
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal2" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="pull-middle modal-title centered">แก้ไขรถ</h4>
+                  </div>
+                  <div class="modal-body" style="height: 190px;">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-default dropdown-toggle goright" data-toggle="dropdown"
+                        aria-expanded="false">
+                        เลือกรถ
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">รหัสรถตู้ 1</a></li>
+                        <li><a href="#">รหัสรถตู้ 2</a></li>
+                      </ul>
+                    </div>
+                    <div class="form-group" style="padding-top: 30px;">
+                      <label class="col-sm-2 col-sm-2 control-label">ข้อมูล</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group" style="padding-top: 30px;">
+                      <label class="col-sm-2 col-sm-2 control-label">ข้อมูล</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">ยกเลิก</button>
+                    <button class="btn btn-theme" type="button">ยืนยัน</button>
                   </div>
                 </div>
               </div>
             </div>
+
+
+
+            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal3" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="pull-middle modal-title centered">ลบข้อมูลรถ</h4>
+                  </div>
+                  <div class="modal-body" style="height: 90px;">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-default dropdown-toggle goright" data-toggle="dropdown"
+                        aria-expanded="false">
+                        เลือกรถ
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">รหัสรถตู้ 1</a></li>
+                        <li><a href="#">รหัสรถตู้ 2</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">ยกเลิก</button>
+                    <button class="btn btn-theme" type="button">ลบข้อมูลรถ</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="pull-middle modal-title centered">Add</h4>
+                  </div>
+
+                  <form method="POST">
+                      {% csrf_token %}
+                      {% for field in bus_form %}
+                      <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">{{ field.label_tag }}</label>
+                        <div class="col-sm-10">
+                            {{ field }} -->
+            <!-- <input type="text" > -->
+            <!-- </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                    <div class="modal-footer">
+                      <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                      <button class="btn btn-theme" type="submit">Submit</button>
+                    </div>    
+                  </form>
+
+                </div>
+              </div>
+            </div>
+
             <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal2" class="modal fade">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -96,8 +224,9 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal3" class="modal fade">
+            </div> -->
+
+            <!-- <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal3" class="modal fade">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -123,7 +252,8 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
+
             <hr>
             <thead>
               <tr>
@@ -147,7 +277,7 @@
                 <td class="hidden-phone"><a href="driver1.html#">{{ bus.driver }}</a></td>
 
                 <td class="hidden-phone">{{ bus.speed }} km/hr</td>
-                <td><i class="fa fa-comments-o" ></i></td>
+                <td><i class="fa fa-comments-o"></i></td>
                 <td>8 คน</td>
                 <td><i class="fa fa-map-marker"></i></td>
               </tr>

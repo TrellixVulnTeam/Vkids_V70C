@@ -1,160 +1,55 @@
-{% extends 'admin/base_admin.html' %} 
+{% extends 'admin/base_admin.html' %}
 {% load static %}
 
 {% block head %}
-  <title>Vkids - Stat Data for Admin</title>
+<title>Vkids - Stat Data for Admin</title>
 {% endblock head %}
 
 {% block content %}
-    <!-- **********************************************************************************************************************************************************
-        MAIN CONTENT
-        *********************************************************************************************************************************************************** -->
-    <!--main content start-->
-    <section id="main-content">
-      <section class="wrapper site-min-height">
-        <div class="row" style="    height: 300px;">
-          <div class="col-md-4 col-sm-4 mb">
-                <div class="custom-box">
-                  <center>
-                  <h1 class="mt"><i class="fa fa-dashboard fa-3x"></i></h1>
-                  <div >
-                    <h1>ความเร็ว</h1>
-                  </div>
-                </center>
-                </div>
-          </div>
-            <!-- end col-4 -->
-            <div class="col-md-8 mb">
-              <div class="custom-box" style="    padding-bottom: 28px;">
-                <ul class="pricing">
-                  <li><h3>ความเร็วเฉลี่ย <b style="color: #f17241"> 40 km/hr</b></h3></li>
-                  <li><h3>ความเร็วสูงสุด <b style="color: #f17241"> 80 km/hr</b></h3></li>
-                  <li><h3>รถที่มีความเร็วมากที่สุด <b style="color: #f17241"> Van 1</b></h3></li>
-                </ul>
-              </div>
-              <!-- end custombox -->
+<section id="main-content" style="color: #333;">
+  <section class="wrapper site-min-height">
+    <div class="row" style="    height: 300px;">
+      <div class="col-md-4 col-sm-4 mb">
+        <div class="custom-box">
+          <center>
+            <h1 class="mt"><i class="fa fa-dashboard fa-3x"></i></h1>
+            <div>
+              <h1>Speed</h1>
             </div>
+          </center>
         </div>
-                    <!-- graph start -->
-          <div class="row mt">
-          <div class="col-sm-12">
-            <section class="panel">
-              <header class="panel-heading">
-                ยังทำกราฟไม่ได้จ้าาาา
-              </header>
-            </section>
-          </div>
-            <!-- /graph -->
-          </div>
+      </div>
+      <!-- end col-4 -->
+      <div class="col-md-8 mb">
+        <div class="custom-box" style=" padding-bottom: 28px;">
+          <ul class="pricing">
+            <li>
+              <h3>ความเร็วเฉลี่ย <b style="color: #f17241"> 40 km/hr</b></h3>
+            </li>
+            <li>
+              <h3>ความเร็วสูงสุด <b style="color: #f17241"> 80 km/hr</b></h3>
+            </li>
+            <li>
+              <h3>รถที่มีความเร็วมากที่สุด <b style="color: #f17241"> Van 1</b></h3>
+            </li>
+          </ul>
+        </div>
+        <!-- end custombox -->
+      </div>
+    </div>
+    <!-- graph start -->
+    <div class="row mt">
+      <div class="col-sm-12">
+        <section class="panel">
+          <header class="panel-heading centered">
+            <h2>Speed</h2>
+          </header>
+          <div id="chartSpeed" style="height: 300px; width: 100%;"></div>
+        </section>
+      </div>
+    </div>
+    </div>
 
-
-    	<!--  -->
-    	<div class="row" style="    height: 300px;">
-          <div class="col-md-4 col-sm-4 mb">
-                <div class="custom-box">
-                  <center>
-                  <h1 class="mt"><i class="fa fa-suitcase fa-3x"></i></h1>
-                  <div >
-                    <h1>น้ำหนักกระเป๋า</h1>
-                  </div>
-                </center>
-                </div>
-          </div>
-            <!-- end col-4 -->
-            <div class="col-md-8 mb">
-              <div class="custom-box" style="    padding-bottom: 28px;">
-                <ul class="pricing">
-                  <li><h3>น้ำหนักกระเป๋าเฉลี่ย <b style="color: #f17241"> 10.2 kg</b></h3></li>
-                  <li><h3>ความเหมาะสมของน้ำหนักกระเป๋า<b style="color: #f17241"> เยอะเกิน </b></h3></li>
-                  <li><h3>น้ำหนักกระเป๋าที่มากสุด<b style="color: #f17241"> นายกก 20 kg</b></h3></li>
-                </ul>
-              </div>
-              <!-- end custombox -->
-            </div>
-        </div>
-            <!-- graph start -->
-          <div class="row mt">
-          <div class="col-sm-12">
-            <section class="panel">
-              <header class="panel-heading">
-                ยังทำกราฟไม่ได้จ้าาาา
-              </header>
-            </section>
-          </div>
-            <!-- /graph -->
-          </div>
-
-        <div class="row" style="    height: 300px;">
-          <div class="col-md-4 col-sm-4 mb">
-                <div class="custom-box">
-                  <center>
-                  <h1 class="mt"><i class="fa fa-exclamation-triangle fa-3x"></i></h1>
-                  <div >
-                    <h1>ความผิดปกติ</h1>
-                  </div>
-                </center>
-                </div>
-          </div>
-            <!-- end col-4 -->
-            <div class="col-md-8 mb">
-              <div class="custom-box" style="    padding-bottom: 28px;">
-                <ul class="pricing">
-                  <li><h3>เหตุการณ์ผิดปกติ <b style="color: #f17241"> 6 ครั้ง</b></h3></li>
-                  <li><h3>อุบัติเหตุ<b style="color: #f17241"> 4 ครั้ง</b></h3></li>
-                  <li><h3>คันที่มีความผิดปกติที่สุด<b style="color: #f17241"> 3</b></h3></li>
-                </ul>
-              </div>
-              <!-- end custombox -->
-            </div>
-        </div>
-                    <!-- graph start -->
-          <div class="row mt">
-          <div class="col-sm-12">
-            <section class="panel">
-              <header class="panel-heading">
-                ยังทำกราฟไม่ได้จ้าาาา
-              </header>
-            </section>
-          </div>
-            <!-- /graph -->
-          </div>
-        <div class="row" style="    height: 300px;">
-          <div class="col-md-4 col-sm-4 mb">
-                <div class="custom-box" style="
-    padding-bottom: 49px;
-">
-                  <center>
-                  <h1 class="mt"><i class="fa fa-clock-o fa-3x"></i></h1>
-                  <div >
-                    <h3>เวลาในการรับส่งนักเรียน</h3>
-                  </div>
-                </center>
-                </div>
-          </div>
-            <!-- end col-4 -->
-            <div class="col-md-8 mb">
-              <div class="custom-box" style="    padding-bottom: 28px;">
-                <ul class="pricing">
-                  <li><h3>เวลาที่ใช้เฉลี่ยเฉลี่ย <b style="color: #f17241"> 3.2 hr</b></h3></li>
-                  <li><h3>เวลาที่ใช้มากที่สุด<b style="color: #f17241">คันที่ 1 5 hr </b></h3></li>
-                  <li><h3>จำนวนรถที่เข้าสาย<b style="color: #f17241"> 1 คัน</b></h3></li>
-                </ul>
-              </div>
-              <!-- end custombox -->
-            </div>
-        </div>
-                    <!-- graph start -->
-          <div class="row mt">
-          <div class="col-sm-12">
-            <section class="panel">
-              <header class="panel-heading">
-                ยังทำกราฟไม่ได้จ้าาาา
-              </header>
-            </section>
-          </div>
-            <!-- /graph -->
-          </div>
-    </section>
     <!-- /MAIN CONTENT -->
     <!--main content end-->
     <!--footer start-->
@@ -165,28 +60,194 @@
         </p>
         <div class="credits">
           <!--
-            You are NOT allowed to delete the credit link to TemplateMag with free version.
-            You can delete the credit link only if you bought the pro version.
-            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
-            Licensing information: https://templatemag.com/license/
-          -->
+              You are NOT allowed to delete the credit link to TemplateMag with free version.
+              You can delete the credit link only if you bought the pro version.
+              Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+              Licensing information: https://templatemag.com/license/
+            -->
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
         <a href="basic_table.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
-          </a>
+        </a>
       </div>
     </footer>
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
-  <script src="{% static 'home/lib/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'home/lib/bootstrap/js/bootstrap.min.js' %}"></script>
-  <script class="include" type="text/javascript" src="{% static 'home/lib/jquery.dcjqaccordion.2.7.js' %}"></script>
-  <script src="{% static 'home/lib/jquery.scrollTo.min.js' %}"></script>
-  <script src="{% static 'home/lib/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <script src="{% static 'home/lib/jquery/jquery.min.js'%}"></script>
+  <script src="{% static 'home/lib/bootstrap/js/bootstrap.min.js'%}"></script>
+  <script class="include" type="text/javascript" src="{% static 'home/lib/jquery.dcjqaccordion.2.7.js'%}"></script>
+  <script src="{% static 'home/lib/jquery.scrollTo.min.js'%}"></script>
+  <script src="{% static 'home/lib/jquery.nicescroll.js'%}" type="text/javascript"></script>
   <!--common script for all pages-->
-  <script src="{% static 'home/lib/common-scripts.js' %}"></script>
+  <script src="{% static 'home/lib/common-scripts.js'%}"></script>
   <!--script for this page-->
+  <script src="{% static 'home/lib/chart-master/canvasjs.min.js'%}"></script>
+  <!-- ความเร็วววววววววววววววววววววววว -->
+  <script>
+    window.onload = function () {
 
-{% endblock content %}
+      var chart = new CanvasJS.Chart("chartSpeed", {
+        animationEnabled: true,
+        axisX: {
+          valueFormatString: "DD MMM,YY"
+        },
+        axisY: {
+          title: "Speed",
+          includeZero: false,
+          suffix: " km/hr"
+        },
+        legend: {
+          cursor: "pointer",
+          fontSize: 16,
+          itemclick: toggleDataSeries
+        },
+        toolTip: {
+          shared: true
+        },
+        data: [{
+          name: "Van1",
+          type: "spline",
+          yValueFormatString: "#0.## km/hr",
+          showInLegend: true,
+          dataPoints: [
+            { x: new Date(2017, 6, 24), y: 31 },
+            { x: new Date(2017, 6, 25), y: 31 },
+            { x: new Date(2017, 6, 26), y: 29 },
+            { x: new Date(2017, 6, 27), y: 29 },
+            { x: new Date(2017, 6, 28), y: 31 },
+            { x: new Date(2017, 6, 29), y: 30 },
+            { x: new Date(2017, 6, 30), y: 120 }
+          ]
+        },
+        {
+          name: "Van2",
+          type: "spline",
+          yValueFormatString: "#0.## km/hr",
+          showInLegend: true,
+          dataPoints: [
+            { x: new Date(2017, 6, 24), y: 20 },
+            { x: new Date(2017, 6, 25), y: 20 },
+            { x: new Date(2017, 6, 26), y: 25 },
+            { x: new Date(2017, 6, 27), y: 25 },
+            { x: new Date(2017, 6, 28), y: 25 },
+            { x: new Date(2017, 6, 29), y: 25 },
+            { x: new Date(2017, 6, 30), y: 78 }
+          ]
+        },
+        {
+          name: "Van3",
+          type: "spline",
+          yValueFormatString: "#0.## km/hr",
+          showInLegend: true,
+          dataPoints: [
+            { x: new Date(2017, 6, 24), y: 22 },
+            { x: new Date(2017, 6, 25), y: 19 },
+            { x: new Date(2017, 6, 26), y: 23 },
+            { x: new Date(2017, 6, 27), y: 24 },
+            { x: new Date(2017, 6, 28), y: 24 },
+            { x: new Date(2017, 6, 29), y: 23 },
+            { x: new Date(2017, 6, 30), y: 139 }
+          ]
+        }]
+      });
+      chart.render();
+
+      function toggleDataSeries(e) {
+        if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+          e.dataSeries.visible = false;
+        }
+        else {
+          e.dataSeries.visible = true;
+        }
+        chart.render();
+      }
+
+    }
+  </script>
+
+  <!-- ความเร็วววววววววววววววววววววววว -->
+  <script>
+    window.onload = function () {
+
+      var chart = new CanvasJS.Chart("chartSpeed", {
+        animationEnabled: true,
+        axisX: {
+          valueFormatString: "DD MMM,YY"
+        },
+        axisY: {
+          title: "Speed",
+          includeZero: false,
+          suffix: " km/hr"
+        },
+        legend: {
+          cursor: "pointer",
+          fontSize: 16,
+          itemclick: toggleDataSeries
+        },
+        toolTip: {
+          shared: true
+        },
+        data: [{
+          name: "Van1",
+          type: "spline",
+          yValueFormatString: "#0.## km/hr",
+          showInLegend: true,
+          dataPoints: [
+            { x: new Date(2017, 6, 24), y: 31 },
+            { x: new Date(2017, 6, 25), y: 31 },
+            { x: new Date(2017, 6, 26), y: 29 },
+            { x: new Date(2017, 6, 27), y: 29 },
+            { x: new Date(2017, 6, 28), y: 31 },
+            { x: new Date(2017, 6, 29), y: 30 },
+            { x: new Date(2017, 6, 30), y: 120 }
+          ]
+        },
+        {
+          name: "Van2",
+          type: "spline",
+          yValueFormatString: "#0.## km/hr",
+          showInLegend: true,
+          dataPoints: [
+            { x: new Date(2017, 6, 24), y: 20 },
+            { x: new Date(2017, 6, 25), y: 20 },
+            { x: new Date(2017, 6, 26), y: 25 },
+            { x: new Date(2017, 6, 27), y: 25 },
+            { x: new Date(2017, 6, 28), y: 25 },
+            { x: new Date(2017, 6, 29), y: 25 },
+            { x: new Date(2017, 6, 30), y: 78 }
+          ]
+        },
+        {
+          name: "Van3",
+          type: "spline",
+          yValueFormatString: "#0.## km/hr",
+          showInLegend: true,
+          dataPoints: [
+            { x: new Date(2017, 6, 24), y: 22 },
+            { x: new Date(2017, 6, 25), y: 19 },
+            { x: new Date(2017, 6, 26), y: 23 },
+            { x: new Date(2017, 6, 27), y: 24 },
+            { x: new Date(2017, 6, 28), y: 24 },
+            { x: new Date(2017, 6, 29), y: 23 },
+            { x: new Date(2017, 6, 30), y: 139 }
+          ]
+        }]
+      });
+      chart.render();
+
+      function toggleDataSeries(e) {
+        if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+          e.dataSeries.visible = false;
+        }
+        else {
+          e.dataSeries.visible = true;
+        }
+        chart.render();
+      }
+
+    }
+  </script>
+
+  {% endblock content %}

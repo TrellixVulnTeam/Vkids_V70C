@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 class Location(models.Model):
     location_id = models.AutoField(primary_key = True)    
@@ -51,7 +50,7 @@ class Bus(models.Model):
     def getStatusLabel(self):
         return dict(self.STATUS_LABEL).get(self.status)
     def getDriverName(self):
-        return self.driver.getName()
+        return self.driver.getName() if self.driver != None else '(no driver)'
     def getCurrentSpeed(self):
         return self.current_speed
 

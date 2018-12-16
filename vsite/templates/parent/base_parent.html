@@ -100,17 +100,26 @@
             </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                    <li><a href="{% url 'dashboard:vkids-parent_profile'%}" style="margin-top: 15px;padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px;"><img
+                    <li><a href="{% url 'dashboard:vkids-parent_profile' %}" style="margin-top: 15px;padding-top: 0px;padding-right: 0px;padding-left: 0px;padding-bottom: 0px;"><img
                                 src="{% static 'home/img/ny.jpg'%}" class="img-circle" width="25"></a></li>
-                    <li><a class="lauange" href="{% url 'dashboard:vkids-parent_dashboard'%}" style="margin-top: 15px;">TH</a></li>
-                    <li><a class="lauange" href="{% url 'dashboard:vkids-parent_dashboard'%}" style="margin-top: 15px;">EN</a></li>
-                    <li>
-                        <form action="/dashboard/logout" method="POST">
-                            {% csrf_token %}
-                            <button class="btn btn-theme" type="submit" style="padding-left:10px;padding-right:10px;padding-top:5px;padding-bottom:5px;margin-top: 15px;">Logout</button>
-                        </form>
+                    <li id="header_inbox_bar" class="dropdown" style="margin-top: 15px;">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="main-admin.html#" style="color: #f17241;border: 1px;border-style:  solid;border-color: #f17241">
+                            แจ้งเหตุ
+                        </a>
+                        <ul class="dropdown-menu extended inbox">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">ติดต่อ 081-111-1111</p>
+                            </li>
                     </li>
-
+                </ul>
+                </li>
+                <li>
+                    <form action="/dashboard/logout" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-theme" type="submit" style="padding-left:10px;padding-right:10px;padding-top:5px;padding-bottom:5px;margin-top: 15px;">Logout</button>
+                    </form>
+                </li>
                 </ul>
             </div>
         </header>

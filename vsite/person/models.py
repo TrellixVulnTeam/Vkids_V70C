@@ -2,6 +2,8 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from main.models import Bus
 
+from firebase import firebase
+
 # Create your models here.
 class Person(models.Model):
     first_name = models.CharField(max_length = 25)
@@ -13,6 +15,10 @@ class Person(models.Model):
         return self.first_name
     def getLastName(self):
         return self.last_name
+    def getName(self):
+        return '{} {}'.format(self.getFirstName(),self.getLastName())
+    def getPhone(self):
+        return self.phone
 
 class Driver(Person):
     driver_id = models.AutoField(primary_key = True)
@@ -23,6 +29,10 @@ class Driver(Person):
 class Parent(models.Model):
     user = models.OneToOneField('user.User', on_delete = models.CASCADE)
     phone = PhoneNumberField(null=True, blank=True)
+    def getName(self):
+        return '{} {}'.format(self.user.first_name,self.user.last_name)
+    def getPhone(self):
+        return self.phone
 
 class Student(Person):
     
@@ -51,14 +61,15 @@ class Student(Person):
     bus = models.ForeignKey('main.Bus', on_delete = models.CASCADE, null = True)
     status = models.CharField(max_length = 6, choices = STATUS_CHOICE, default= DONTCARE, blank = True)
     
+    card_key = models.CharField(max_length = 15, null = True)
+    time = models.CharField(max_length = 20,blank = True)
+
     parent = models.ForeignKey(Parent, on_delete = models.CASCADE, null = True)
-    bag_weight = models.IntegerField(blank = True, null = True) 
-    #weight 
+    bag_weight = models.FloatField(blank = True, null = True) 
+    weight = models.FloatField(blank = True, default = 40) 
 
     def getId(self):
         return self.student_id
-    def getName(self):
-        return '{} {}'.format(self.getFirstName(),self.getLastName())
     def getBus(self):
         return self.bus.getBusNumber()
     def getBagWeight(self):
@@ -69,6 +80,20 @@ class Student(Person):
         return dict(self.STATUS_LABEL).get(self.status)
     def getCurrentSpeed(self):
         return self.bus.getCurrentSpeed()
+    def getLastTime(self):
+        return self.time
+    def updateStatus(self,firebase,time):
+        weight = firebase.get('/Vkids_Data/Weight', None)
+        if (time != self.getLastTime()):
+            if (self.status == Student.DONTCARE):
+                self.status = Student.IN_BUS
+            elif (self.status == Student.ARRIVE):
+                self.status = Student.IN_BUS
+            elif (self.status == Student.IN_BUS):
+                self.status = Student.ARRIVE
+            self.time = time
+            self.bag_weight = weight*2 - self.weight # x2 for prototype gain
+            self.save()
 
 class Admin(models.Model):
     user = models.OneToOneField('user.User', on_delete = models.CASCADE)
