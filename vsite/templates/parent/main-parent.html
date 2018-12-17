@@ -25,12 +25,14 @@
                 {% endfor %}
 
                 {% csrf_token %}
-                <input type="submit" value="เลือกเด็ก" id="submit1">
+                <input type="submit" value="เลือกเด็ก" id="submit1" style="width:95%;">
+                <i class="fa fa-plus" data-toggle="modal" href="main-parent.html#myModal" style="margin-top: 20px; text-align:center;width:
+              4%;"></i>
               </form>
 
 
               <!-- add kids -->
-              <i class="fa fa-plus" data-toggle="modal" href="main-parent.html#myModal" style="margin-top: 20px; text-align:center;width:6%;"></i>
+              
             </div>
           </div>
           <!-- pop-up -->
@@ -41,40 +43,27 @@
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                   <h4 class="centered modal-title">เพิ่มเด็ก</h4>
                 </div>
-                <div class="modal-body" style="height:130px;">
+                <div class="modal-body" style="height:100px;">
                   <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label">Code</label>
+                    <label class="col-sm-2 col-sm-2 control-label">รหัส</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control">
                     </div>
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                  <button class="btn btn-theme" type="button">Submit</button>
+                  <button data-dismiss="modal" class="btn btn-default" type="button">ยกเลิก</button>
+                  <button class="btn btn-theme" type="button">ยืนยัน</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-md-3">
-            <div class="darkblue-panel pn">
-              <div class="darkblue-header">
-                <h5>DEKDOK1</h5>
-              </div>
-              <h1 class="mt"><i class="fa fa-user fa-3x"></i></h1>
-              <p>เบอร์ติดต่อผู้ดูแลรถตู้</p>
-              <footer>
-                <div class="centered">
-                  <h5><i class="fa fa-phone"></i> 080-000-0000 </h5>
-                </div>
-              </footer>
-            </div>
-          </div>
+          
 
           <div class="row">
             <div class="col-md-3">
-              <div class="weather-3 pn centered" style="{{student_information.status_label}}">
+              <div class="weather-3 pn centered" style ="{{student_information.status_label}}">
                 <i class="fa fa-check"></i>
                 <h1>{{student_information.status}}</h1>
                 <div class="info">
@@ -119,23 +108,37 @@
  -->
             <div class="col-md-3">
               <div class="weather-3 pn centered" style="background: #797979">
-                <i class="fa fa-suitcase"></i>
-                <h1>{{student_information.bag_weight}} kg</h1>
+                <i class="fa fa-suitcase" style="min-height: 130px;"></i>
+                <!-- <h1>{{student_information.bag_weight}} kg</h1> -->
                 <div class="info">
                   <div class="row">
-                    <h3 class="centered" style="margin-bottom: 47px;">ปกติ</h3>
+                      <h1 style="color:#797979;min-height: 60px;">{{student_information.bag_weight}} kg</h1>
                   </div>
                 </div>
               </div>
             </div>
 
+            <div class="col-md-3">
+                <div class="darkblue-panel pn">
+                  <div class="darkblue-header">
+                    
+                  </div>
+                  <h1 class="mt"><i class="fa fa-user fa-3x"></i></h1>
+                  <h5>เบอร์ติดต่อผู้ดูแลรถตู้</h5>
+                  <footer>
+                    <div class="centered">
+                      <h5><i class="fa fa-phone"></i> 080-000-0000 </h5>
+                    </div>
+                  </footer>
+                </div>
+              </div>
           </div>
 
           <div class="row mt">
             <div class="col-sm-12">
               <section class="panel">
                 <header class="panel-heading">
-                  Google Map with Loaction List
+                    <h2>แสดงตำแหน่งรถ</h2>
                 </header>
                 <div class="panel-body">
                   <div id="gmap-list"></div>
@@ -151,7 +154,7 @@
               <p class="centered">
                 <li class="sub-menu" style="list-style: none;">
                   <a href="javascript:;">
-                    <h4><i class="fa fa-angle-right"></i> History</h4>
+                    <h4><i class="fa fa-angle-right"></i> ประวัติ</h4>
                     <hr>
                   </a>
                   <ul class="sub">
@@ -163,7 +166,6 @@
                           <th>เวลาส่ง</th>
                           <th>ความเร็วเฉลี่ยที่ใช้</th>
                           <th>น้ำหนักกระเป๋า</th>
-                          <th>สถานะของน้ำหนักกระเป๋า</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -173,7 +175,6 @@
                           <td>11:11</td>
                           <td>111</td>
                           <td>11</td>
-                          <td>หนักไป</td>
                         </tr>
                       </tbody>
                     </table>

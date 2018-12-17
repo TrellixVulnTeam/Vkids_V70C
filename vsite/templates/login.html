@@ -37,7 +37,7 @@
   <div id="login-page">
     <div class="container">
       <form class="form-login" action="{% url 'authentication:vkids-login' %}" method="POST">
-        <h2 class="form-login-heading">Log In</h2>
+        <h2 class="form-login-heading">ลงชื่อเข้าใช้</h2>
         <div class="login-wrap">
           {% csrf_token %}
           {{ form.as_p }}
@@ -45,12 +45,12 @@
           <br>
           <input type="password" class="form-control" placeholder="Password"> -->
           <label class="checkbox">
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me"> จดจำไว้
             <span class="pull-right">
-            <a data-toggle="modal" href="#"> Forgot Password?</a>
+            <a data-toggle="modal" href="login.html#myModal"> ลืมรหัสผ่าน</a>
             </span>
             </label>
-          <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> LOG IN</button>
+          <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> ลงชื่อเข้าใช้</button>
           <hr>
 
         <!-- Modal -->
@@ -59,15 +59,15 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Forgot Password ?</h4>
+                <h4 class="modal-title">ลืมรหัสผ่าน</h4>
               </div>
               <div class="modal-body">
-                <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                <p>กรุณากรอก E-mail ด้านล่างเพื่อรีเซ็ตรหัสผ่าน</p>
+                <input type="text" name="email" placeholder="E-mail" autocomplete="off" class="form-control placeholder-no-fix">
               </div>
               <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                <button class="btn btn-theme" type="button">Submit</button>
+                <button data-dismiss="modal" class="btn btn-default" type="button">ยกเลิก</button>
+                <button class="btn btn-theme" type="button">ยืนยัน</button>
               </div>
             </div>
           </div>
